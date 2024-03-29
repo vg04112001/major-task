@@ -1,0 +1,35 @@
+.fixedBg {
+  background-image: url("../../public/assets/background_car.png");
+  height: 888px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  /* object-position: 50% 50%; */
+}
+
+#text{
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  /* -ms-transform: translate(-50%,-50%); */
+}
+
+.icons{
+  position: absolute;
+  bottom: 50px;
+  left: 45%;
+  font-size: 50px;
+  color: white;
+  translate: 5% 400%;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .icons{
+   display: none;
+  }
+}

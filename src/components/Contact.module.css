@@ -1,0 +1,53 @@
+.imgCar {
+  display: flex;
+  margin: auto;
+}
+
+.aboutUs {
+  width: 36px;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  left: 49%;
+  margin-bottom: 10px;
+}
+
+.rowWrap {
+  max-width: 662px !important;
+  margin: auto;
+  /* background: red; */
+}
+
+.inputElement:hover {
+  border-color: rgba(185, 185, 185, 0.541);
+  border-style: solid;
+}
+
+/* .inputElement:not:focus {
+  border-color: rgba(185, 185, 185, 0.541);
+  background: white !important;
+  border-style: solid;
+} */
+input[type=email]:not(:placeholder-shown):invalid {
+  background: lightpink;
+  border: 2px solid red;
+}
+/* input[type=email]:invalid {
+  background: lightpink;
+  border: 2px solid red;
+} */
+
+input[type=email]:focus-visible{
+  background: white !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .imgCar{
+   width: 191px;
+   height: 155px
+  }
+
+  /* .colWrap{
+    width: 75% !important;
+   } */
+}

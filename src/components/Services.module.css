@@ -1,0 +1,13 @@
+.services {
+  width: 36px;
+  height: 3px;
+  background-color: black;
+  position: absolute;
+  left: 49%;
+}
+
+@media only screen and (max-width: 767px) {
+  .services{
+    left: 46%;
+  }
+}
