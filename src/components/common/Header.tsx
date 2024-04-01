@@ -27,10 +27,11 @@ const Header = () => {
           <Nav className={`${styles.navItems}`}>
             <Link to="/" className={`text-decoration-none text-white ${styles.link}`}>HOME</Link>
             <Link to="/services" className={`text-decoration-none text-white ${styles.link}`}>SERVICES</Link>
-            <Link to="#home" className={`text-decoration-none text-white ${styles.link}`}>OUR WORK</Link>
+            <Link to="/our-work" className={`text-decoration-none text-white ${styles.link}`}>OUR WORK</Link>
             <Link to="/about" className={`text-decoration-none text-white ${styles.link}`}>ABOUT US</Link>
             <Link to="/contact" className={`text-decoration-none text-white ${styles.link}`}>CONTACT</Link>
             <Link to="/book-online" className={`text-decoration-none text-white ${styles.link}`}>BOOK ONLINE</Link>
+            <Link to="/wishlist" className={`text-decoration-none text-white ${styles.link}`}>YOUR WISHLIST</Link>
             <Link to="#link" className={`text-decoration-none text-white ${styles.link}`}><FaUserCircle size={25} className="me-2"/>Log In</Link>
           </Nav>
         {/* </Navbar.Collapse> */}

@@ -1,11 +1,5 @@
-import React from 'react'
-
 const BookOnline = () => {
-  return (
-    <div>
-      Book Online
-    </div>
-  )
-}
+  return <div>Book Online</div>;
+};
 
-export default BookOnline
+export default BookOnline;
