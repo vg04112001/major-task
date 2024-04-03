@@ -10,6 +10,7 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import OurWork from "./components/OurWork";
 import WishList from "./components/WishList";
+import GoToTop from "./components/GoToTop";
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -28,6 +29,7 @@ function App() {
   return (
     <>
       <Router>
+        <GoToTop />
         <Header />
         <AppRoutes />
         <Footer />

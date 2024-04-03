@@ -2,9 +2,10 @@ import styles from "./Services.module.css";
 import { services } from "../services";
 import SingleService from "./common/SingleService";
 import { Container, Row } from "react-bootstrap";
+import { SingleServiceItem } from "../interface";
 
 const Services = () => {
-  const serviceList = services.map((item) => {
+  const serviceList = services.map((item: SingleServiceItem) => {
     return <SingleService key={item.id} singleService={item} />;
   });
 

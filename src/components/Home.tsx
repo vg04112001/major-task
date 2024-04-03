@@ -4,15 +4,10 @@ import { RiToolsFill } from "react-icons/ri";
 const Home = () => {
   return (
     <>
-      <div className={`${styles.fixedBg}`}>
-        <div>
-          {/* <img
-        src="assets/car.jpg"
-        alt="placeholder"
-        style={{ width: "100%", maxHeight: "888px" }}
-      /> */}
-        </div>
-      </div>
+      <div
+        className={`${styles.fixedBg}`}
+        style={{ backgroundImage: 'url("assets/new_car_back.png")' }}
+      ></div>
       <div id={styles.text}>
         <div className="d-flex justify-content-center">
           <RiToolsFill size={100} />
@@ -25,6 +20,10 @@ const Home = () => {
         <FaPinterest size={30} color="white" className="me-3" />
         <FaInstagram size={30} color="white" />
       </div>
+      <div
+        className={`${styles.fixedBg}`}
+        style={{ backgroundImage: 'url("assets/happy_face.png")' }}
+      ></div>
     </>
   );
 };

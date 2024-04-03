@@ -14,7 +14,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .colWrap{
-   width: 75% !important;
+  .colWrap {
+    width: 75% !important;
   }
 }

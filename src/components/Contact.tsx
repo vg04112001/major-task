@@ -1,11 +1,10 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import styles from "./Contact.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { SingleFormData } from "../interface";
 
 const Contact = () => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<SingleFormData>({
     fname: "",
     lname: "",
     email: "",
@@ -16,22 +15,31 @@ const Contact = () => {
   useEffect(() => {
     console.log("re-render");
   }, []);
-  const handleChange = (event: any) => {
+  const handleChange = (event: any) : void => {
     // setFname(event.target.value);
-    console.log(event.target.id);
+    // console.log(event.target.id);
     setForm({
       ...form,
       [event.target.id]: event.target.value,
     });
   };
 
-  const handlerSubmit = (event: any) => {
+
+  const handlerSubmit = (event: any) : void => {
     // console.log(event)
     event.preventDefault();
     console.log(form);
-    // const jsonData = JSON.stringify(form);
-    // console.log(jsonData)
-    // fs.writeFileSync('formdata.json', jsonData);
+    const fileData = JSON.stringify(form);
+    handleSaveToPC(fileData, 'formData');
+    // const file = '/formData.json'
+    // const obj = form
+     
+    // jsonfile.writeFile(file, obj)
+    // .then(res => {
+    //   console.log('Write complete')
+    // })
+    // .catch(error => console.error(error))
+
     setForm({
       fname: "",
       lname: "",
@@ -41,11 +49,21 @@ const Contact = () => {
     });
   };
 
+  const handleSaveToPC = (jsonData:any, filename:any) => {
+    const fileData = JSON.stringify(jsonData);
+    const blob = new Blob([fileData], {type: "text/plain"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = `${filename}.json`;
+    link.href = url;
+    link.click();
+  };
+
   return (
     <div className="bg-secondary">
       <img
         src="assets/contact_car.png"
-        alt="car-image"
+        alt="car"
         className={`${styles.imgCar}`}
       />
       <Container fluid>
@@ -55,16 +73,16 @@ const Contact = () => {
             <div className={`${styles.aboutUs}`}></div>
           </div>
           <Col
-            className={` ps-5  ${styles.colWrap} text-left`}
+            className={`ps-5 pt-3 ${styles.contentWrap}`}
             lg={6}
             md={6}
-            sm={12}
+            sm={6}
           >
             <div className="my-3">
               <div>500 Terry Francine Street</div>
-              <div>San Francisco, CA 94158</div>
-              <div>info@mysite.com</div>
-              <div>Tel: 123-456-7890</div>
+              <p>San Francisco, CA 94158</p>
+              <p>info@mysite.com</p>
+              <p>Tel: 123-456-7890</p>
             </div>
             <div>
               <div>OPENING HOURS:</div>
@@ -73,7 +91,7 @@ const Contact = () => {
               <div>​Sunday: 8am - 11pm</div>
             </div>
           </Col>
-          <Col className={`bg-white ${styles.colWrap}`} lg={6} md={6} sm={12}>
+          <Col className={`pt-3 ps-3 ${styles.contentWrap}`} lg={6} md={6} sm={6}>
             <div className="my-3">
               <form onSubmit={handlerSubmit}>
                 <label htmlFor="fname">First name</label>
@@ -83,6 +101,8 @@ const Contact = () => {
                   id="fname"
                   name="fname"
                   value={form.fname}
+                  minLength={4}
+                  maxLength={15}
                   onChange={handleChange}
                   className={`${styles.inputElement}`}
                   required
@@ -95,6 +115,8 @@ const Contact = () => {
                   id="lname"
                   name="lname"
                   value={form.lname}
+                  minLength={4}
+                  maxLength={15}
                   onChange={handleChange}
                   className={`${styles.inputElement}`}
                   required
@@ -108,9 +130,10 @@ const Contact = () => {
                   name="email"
                   required
                   className={`${styles.inputElement}`}
-                  placeholder=""
+                  // placeholder=""
                   value={form.email}
                   onChange={handleChange}
+                  pattern='[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}'
                 />
                 <br />
                 <label htmlFor="subject">Subject</label>
@@ -138,9 +161,7 @@ const Contact = () => {
                   required
                 />
                 <br />
-                <br />
-
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" className="bg-dark text-white"/>
               </form>
             </div>
           </Col>

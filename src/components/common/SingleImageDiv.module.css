@@ -1,17 +1,12 @@
 .overlay {
-  position: absolute; 
+  position: absolute;
   bottom: 0px;
   left: 0px;
-  height: 100%; 
-  /* background: rgba(0, 0, 0, 0.5); */
+  height: 100%;
   opacity: 0;
-  /* background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); Black see-through */
-  color: red; 
-  /* width: 27%; */
+  color: red;
   max-width: 382px;
-  transition: .5s ease;
-  /* opacity:0; */
+  transition: 0.5s ease;
   color: white;
   font-size: 20px;
   padding: 35px;
@@ -20,10 +15,17 @@
 
 .imgContainer:hover .overlay {
   cursor: pointer;
-   /* background: rgb(0, 0, 0); */
   background: rgba(0, 0, 0, 0.5);
-  /* background-color: red; */
-  /* background: rgb(60, 60, 60); */
-  /* filter: alpha(opacity=70); */
   opacity: 1;
+}
+
+@media screen and (min-width: 376px) and (max-width: 575px) {
+  .overlay {
+    max-width: 427px;
+    left: auto;
+  }
+  .imgContainer{
+    display: flex;
+    justify-content: center;
+  }
 }

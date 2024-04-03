@@ -1,51 +1,55 @@
-.link:hover{
+.link:hover {
   color: grey !important;
   transition: 0.3s ease-in-out;
 }
 
-.link{
+.link {
+  text-decoration: none;
+  color: white;
   padding: 0 20px;
 }
 
-
-
 @media screen and (max-width: 991px) and (min-width: 768px) {
-  .link{
+  .link {
     padding: 0 10px !important;
     font-size: 14px;
-    margin: auto
+    margin: auto;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .link{
+  .link {
     padding: 0 10px !important;
     font-size: 10px;
-    margin: auto
+    margin: auto;
   }
 }
 
-.navItems{
+.navItems {
   margin: auto;
 }
 
 @media only screen and (max-width: 576px) {
-  .navItems{
+  .navItems {
     display: none !important;
   }
 }
 
-.sideBarLinks:hover{
+.sideBarLinks:hover {
   color: grey !important;
 }
 
-.sideBarLinks{
-  padding: 0 12px;
+.sideBarLinks {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 16px 12px;
 }
 
 .closeIcon {
-    color: white;
-    position: absolute;
-    right: 30px;
-    top: 25px;
+  color: white;
+  position: absolute;
+  right: 30px;
+  top: 25px;
 }

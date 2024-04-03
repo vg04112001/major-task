@@ -1,0 +1,15 @@
+.topBtn {
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  background-color: brown;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 6rem;
+  right: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}

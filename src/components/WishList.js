@@ -12,8 +12,8 @@ const WishList = () => {
           wish.map((item) => {
             return (
               <>
-                <Col lg={4}>
-                  <img src={`${item.imgPath}`} width={50} height={50} />
+                <Col lg={4} key={wish.id}>
+                  <img src={`${item.imgPath}`} alt="wishListImg" width={50} height={50} />
                 </Col>
                 <Col lg={4}>{item.title}</Col>
                 <Col lg={4}>{item.desc}</Col>

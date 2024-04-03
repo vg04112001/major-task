@@ -1,6 +1,11 @@
 import { Col } from "react-bootstrap";
+import { SingleServiceItem } from "../../interface";
 
-const SingleService = ({ singleService }: any) => {
+type SingleServiceProps = {
+  singleService : SingleServiceItem
+}
+
+const SingleService = ({ singleService }: SingleServiceProps) => {
   const { title, text, icon } = singleService;
   return (
     <Col lg={4} md={6} sm={12} className="text-center">
