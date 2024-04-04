@@ -21,10 +21,6 @@ export interface SingleImgData {
   wishDisplay: boolean;
 }
 
-// export type ImageDataState = {
-//   wishes: SingleImgData[]
-// }
-
 export type ImageDataAction = {
   type: string
   wishDataPayload: SingleImgData

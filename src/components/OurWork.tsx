@@ -3,12 +3,8 @@ import styles from "./OurWork.module.css";
 import { imagesData } from "../images";
 import SingleImageDiv from "./common/SingleImageDiv";
 import { SingleImgData } from "../interface";
-// import { useSelector } from "react-redux";
 
 const OurWork = () => {
-  // const wish = useSelector((state: any) => state.wishListReducer);
-  // console.log(wish);
-
   const imgList = imagesData.map((item: SingleImgData) => {
     return <SingleImageDiv key={item.id} singleImgData={item} />;
   });

@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const WishList = () => {
   const wish = useSelector((state) => state.wishListReducer);
-  // console.log(wish);
   return (
     <Container>
       <Row>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { FaArrowUp } from "react-icons/fa";
 import { IoIosArrowUp } from "react-icons/io";
 import styles from './GoToTop.module.css'
 

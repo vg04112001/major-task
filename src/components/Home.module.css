@@ -1,5 +1,4 @@
 .fixedBg {
-  /* background-image: url("../../public/assets/new_car_back.png"); */
   height: 650px;
   background-attachment: fixed;
   background-position: center;
@@ -18,13 +17,6 @@
 }
 
 .icons {
-  /* position: absolute;
-  bottom: 50px;
-  left: 45%;
-  font-size: 50px;
-  color: white;
-  translate: 5% 400%; */
-
   position: absolute;
   top: 600px;
   left: 50%;

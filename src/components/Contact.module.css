@@ -22,11 +22,6 @@
   border-style: solid;
 }
 
-/* .inputElement:not:focus {
-  border-color: rgba(185, 185, 185, 0.541);
-  background: white !important;
-  border-style: solid;
-} */
 input[type="email"]:not(:placeholder-shown):invalid {
   background: lightpink;
   border: 2px solid red;

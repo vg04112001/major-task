@@ -48,9 +48,6 @@ const Header = () => {
           <Link to="/contact" className={`${styles.link}`}>
             CONTACT
           </Link>
-          {/* <Link to="/book-online" className={`${styles.link}`}>
-            BOOK ONLINE
-          </Link> */}
           <Link to="/wishlist" className={`${styles.link}`}>
             YOUR WISHLIST
           </Link>

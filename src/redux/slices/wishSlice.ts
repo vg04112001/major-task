@@ -8,11 +8,9 @@ const wishListSlice = createSlice({
   initialState,
   reducers: {
     addWishList(state, action) {
-      console.warn('add reducer called', action);
       state.push(action.payload);
     },
     removeWishList(state, action) {
-      console.warn('remove reducer called', action);
       const index = state.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
         state.splice(index, 1);
