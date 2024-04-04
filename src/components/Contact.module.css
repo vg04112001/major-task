@@ -31,10 +31,10 @@ input[type="email"]:not(:placeholder-shown):invalid {
   background: lightpink;
   border: 2px solid red;
 }
-/* input[type=email]:invalid {
+input[type=email]:not:invalid {
   background: lightpink;
   border: 2px solid red;
-} */
+}
 
 input[type="email"]:focus-visible {
   background: white !important;

@@ -25,39 +25,157 @@ const Contact = () => {
   };
 
 
-  const handlerSubmit = (event: any) : void => {
-    // console.log(event)
-    event.preventDefault();
-    console.log(form);
-    const fileData = JSON.stringify(form);
-    handleSaveToPC(fileData, 'formData');
-    // const file = '/formData.json'
-    // const obj = form
+  // const handlerSubmit = (event: any) => {
+  //   // console.log(event)
+  //   event.preventDefault();
+  //   console.log(form);
+    
+  //   fetch(`http://localhost:8000/data`, {
+  //     method: "POST",
+  //     body: JSON.stringify(form),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     }
+  //   }).then((response) => response.json());
+
+
+  //   const fileData = JSON.stringify(form);
+  //   // handleSaveToPC(fileData, 'formData');
+  //   // const file = '/formData.json'
+  //   // const obj = form
      
-    // jsonfile.writeFile(file, obj)
-    // .then(res => {
-    //   console.log('Write complete')
-    // })
-    // .catch(error => console.error(error))
+  //   // jsonfile.writeFile(file, obj)
+  //   // .then(res => {
+  //   //   console.log('Write complete')
+  //   // })
+  //   // .catch(error => console.error(error))
 
-    setForm({
-      fname: "",
-      lname: "",
-      email: "",
-      subject: "",
-      message: "",
+  //   setForm({
+  //     fname: "",
+  //     lname: "",
+  //     email: "",
+  //     subject: "",
+  //     message: "",
+  //   });
+  // };
+
+const handlerSubmit = (event: any) => {
+  event.preventDefault();
+
+  // Check email uniqueness
+  fetch("http://localhost:8000/data")
+      .then((response) => response.json())
+      .then((jsonData) => {
+          const existingUser = jsonData.find((user: any) => user.email === form.email);
+          if (existingUser) {
+              // Email already exists, update the existing record
+              const confirmUpdate = prompt("Email is already in use. Do you want to update the user email?");
+              if (confirmUpdate) {
+                // console.log(existingUser)
+                  // Set updated email in the form
+                  // console.log(existingUser)
+                  // setForm({ ...existingUser, email: "" });
+                  let pattern = /[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/;
+                  // pattern.test(confirmUpdate);
+                  if (pattern.test(confirmUpdate)) {
+                    if(existingUser.email === confirmUpdate){
+                      alert("Please enter other email to update.");
+                    }
+                    else{
+                      const updatedForm = { ...existingUser, email: confirmUpdate };
+                      updateUser(existingUser.id, updatedForm);
+                    }
+                    // alert("Email is valid!");
+                  } else {
+                    alert("Please enter a valid email address.");
+                  }
+                  // const updatedForm = { ...existingUser, email: confirmUpdate };
+                  // Update user data
+                  // updateUser(existingUser.id, updatedForm); // Assuming your data has an 'id' field
+              } else {
+                  // Optionally, you can reset the form
+                  setForm({ ...form, email: "" });
+              }
+          } else {
+              // Email is unique, proceed with creating a new record
+              createNewUser();
+          }
+      })
+      .catch((error) => {
+          console.error("Error fetching existing data:", error);
+          // Handle error scenario
+      });
+};
+
+const createNewUser = () => {
+  // POST request to create a new user
+  fetch("http://localhost:8000/data", {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: {
+          "Content-Type": "application/json",
+      }
+  }).then((response) => response.json())
+    .then(() => {
+        // Reset form after successful submission
+        alert("New user created successfully!");
+        setForm({
+            fname: "",
+            lname: "",
+            email: "",
+            subject: "",
+            message: "",
+        });
+
+        // alert("New user created successfully!");
+    })
+    .catch((error) => {
+        console.error("Error creating new user:", error);
+        // Handle error scenario
     });
-  };
+};
 
-  const handleSaveToPC = (jsonData:any, filename:any) => {
-    const fileData = JSON.stringify(jsonData);
-    const blob = new Blob([fileData], {type: "text/plain"});
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = `${filename}.json`;
-    link.href = url;
-    link.click();
-  };
+const updateUser = (userId: string, updatedForm: any) => {
+  // PUT/PATCH request to update the existing user record
+  fetch(`http://localhost:8000/data/${userId}`, {
+      method: "PUT",
+      body: JSON.stringify(updatedForm),
+      headers: {
+          "Content-Type": "application/json",
+      }
+  }).then((response) => response.json())
+    .then(() => {
+        // Reset form after successful update
+        alert("User record updated successfully!");
+        setForm({
+            fname: "",
+            lname: "",
+            email: "",
+            subject: "",
+            message: "",
+        });
+
+        // alert("User record updated successfully!");
+    })
+    .catch((error) => {
+        console.error("Error updating user record:", error);
+        // Handle error scenario
+    });
+};
+
+
+
+  // const handleSaveToPC = (jsonData:any, filename:any) => {
+  //   const fileData = JSON.stringify(jsonData);
+  //   const blob = new Blob([fileData], {type: "text/plain"});
+  //   const url = URL.createObjectURL(blob);
+  //   // console.log(url)
+  //   const link = document.createElement('a');
+  //   console.log(link)
+  //   // link.download = `${filename}.json`;
+  //   // link.href = url;
+  //   // link.click();
+  // };
 
   return (
     <div className="bg-secondary">
@@ -101,10 +219,11 @@ const Contact = () => {
                   id="fname"
                   name="fname"
                   value={form.fname}
-                  minLength={4}
-                  maxLength={15}
+                  minLength={2}
+                  maxLength={10}
                   onChange={handleChange}
                   className={`${styles.inputElement}`}
+                  pattern="[A-Za-z]{2,10}"
                   required
                 />
                 <br />
@@ -115,25 +234,28 @@ const Contact = () => {
                   id="lname"
                   name="lname"
                   value={form.lname}
-                  minLength={4}
-                  maxLength={15}
+                  minLength={2}
+                  maxLength={10}
                   onChange={handleChange}
                   className={`${styles.inputElement}`}
+                  pattern="[A-Za-z]{2,10}"
                   required
                 />
                 <br />
                 <label htmlFor="email">Email</label>
                 <br />
+                {/* <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"></input> */}
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
                   className={`${styles.inputElement}`}
-                  // placeholder=""
+                  placeholder=""
                   value={form.email}
                   onChange={handleChange}
-                  pattern='[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}'
+                  // title="email validate"
+                  pattern='[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$'
                 />
                 <br />
                 <label htmlFor="subject">Subject</label>
