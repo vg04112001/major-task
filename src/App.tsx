@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import OurWork from "./components/OurWork";
 import WishList from "./components/WishList";
 import GoToTop from "./components/GoToTop";
+import ErrorPage from "./components/ErrorPage";
 
 function AppRoutes() {
   const routes = useRoutes([
@@ -21,6 +22,7 @@ function AppRoutes() {
     { path: "/contact", element: <Contact /> },
     { path: "/wishlist", element: <WishList /> },
     { path: "/book-online", element: <BookOnline /> },
+    { path: "*", element: <ErrorPage /> },
   ]);
   return routes;
 }

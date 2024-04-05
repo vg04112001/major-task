@@ -4,14 +4,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
   FaUserCircle,
 } from "react-icons/fa";
 import { useState } from "react";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { IoMdClose } from "react-icons/io";
+import SideNavbar from "../SideNavbar";
 
 const Header = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -23,7 +19,7 @@ const Header = () => {
     <Navbar
       bg="dark"
       data-bs-theme="dark"
-      className="p-0 bg-dark sticky-md-top"
+      className="p-0 bg-dark sticky-sm-top"
       style={{ height: "64px" }}
     >
       <Container>
@@ -57,70 +53,11 @@ const Header = () => {
           </Link>
         </Nav>
       </Container>
-      <Offcanvas
-        show={show}
-        onHide={handleClose}
-        style={{ backgroundColor: "rgb(60, 60, 60)" }}
-      >
-        <Offcanvas.Body>
-          <IoMdClose
-            size="30"
-            onClick={handleClose}
-            className={`${styles.closeIcon}`}
-          />
-          <Link to="#link" className={`${styles.sideBarLinks}`}>
-            <FaUserCircle size={25} className="me-2" />
-            Log In
-          </Link>
-          <Link
-            to="/"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            HOME
-          </Link>
-          <Link
-            to="/services"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            SERVICES
-          </Link>
-          <Link
-            to="/our-work"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            OUR WORK
-          </Link>
-          <Link
-            to="/about"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            ABOUT US
-          </Link>
-          <Link
-            to="/contact"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            CONTACT
-          </Link>
-          <Link
-            to="/book-online"
-            className={`${styles.sideBarLinks}`}
-            onClick={handleClose}
-          >
-            BOOK ONLINE
-          </Link>
-          <div className="d-flex justify-content-center pt-3">
-            <FaFacebook size={30} color="white" className="me-3" />
-            <FaPinterest size={30} color="white" className="me-3" />
-            <FaInstagram size={30} color="white" />
-          </div>
-        </Offcanvas.Body>
-      </Offcanvas>
+      <SideNavbar
+        showProp={show}
+        onHideProp={handleClose}
+        onClickProp={handleClose}
+      />
     </Navbar>
   );
 };

@@ -4,7 +4,7 @@ import styles from "./About.module.css";
 const About = () => {
   return (
     <Container fluid>
-      <Row className="bg-secondary">
+      <Row>
         <Col
           lg={12}
           md={12}

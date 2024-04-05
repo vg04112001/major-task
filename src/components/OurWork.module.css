@@ -1,3 +1,9 @@
+.containerWrap{
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0px 0px 114px 0 !important;
+}
+
 .services {
   width: 36px;
   height: 3px;
@@ -9,5 +15,11 @@
 @media only screen and (max-width: 767px) {
   .services {
     left: 46%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .containerWrap{
+    padding: 0px !important;
   }
 }

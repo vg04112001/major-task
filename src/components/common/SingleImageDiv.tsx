@@ -13,6 +13,7 @@ type SingleImageProps = {
 };
 
 const SingleImageDiv = ({ singleImgData }: SingleImageProps) => {
+  
   const { id, title, desc, imgPath } = singleImgData;
 
   const dispatch: Dispatch<any> = useDispatch();
@@ -43,8 +44,8 @@ const SingleImageDiv = ({ singleImgData }: SingleImageProps) => {
       <img src={imgPath} alt="backCover" className="img-fluid" />
       <div className={`${styles.overlay}`}>
         {title}
-        <div style={{ fontSize: "18px" }}>{desc[0]}</div>
-        <div style={{ fontSize: "18px" }}>{desc[1]}</div>
+        <div className={`${styles.description}`}>{desc[0]}</div>
+        <div className={`${styles.description}`}>{desc[1]}</div>
         <div className="d-flex justify-content-between">
           <div>
             {wishVar ? (

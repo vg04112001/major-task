@@ -1,6 +1,6 @@
-import { FaFacebook, FaInstagram, FaPinterest } from "react-icons/fa";
 import styles from "./Home.module.css";
 import { RiToolsFill } from "react-icons/ri";
+import SocialGroupIcons from "./common/SocialGroupIcons";
 const Home = () => {
   return (
     <>
@@ -16,9 +16,7 @@ const Home = () => {
         <h3>VINTAGE CAR SPECIALIST</h3>
       </div>
       <div className={`${styles.icons}`}>
-        <FaFacebook size={30} color="white" className="me-3" />
-        <FaPinterest size={30} color="white" className="me-3" />
-        <FaInstagram size={30} color="white" />
+       <SocialGroupIcons/>
       </div>
       <div
         className={`${styles.fixedBg}`}

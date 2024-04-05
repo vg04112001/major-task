@@ -10,7 +10,7 @@ const Services = () => {
   });
 
   return (
-    <Container className="p-2">
+    <Container className={`p-2`}>
       <h2 className="text-center">SERVICES</h2>
       <div className={`${styles.services}`}></div>
       <Row className="mt-3">{serviceList}</Row>

@@ -2,6 +2,7 @@ import styles from "./Contact.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { SingleFormData } from "../interface";
+import CustomInput from "./common/CustomInput";
 
 const Contact = () => {
   const [form, setForm] = useState<SingleFormData>({
@@ -121,7 +122,7 @@ const Contact = () => {
       });
   };
   return (
-    <div className="bg-secondary">
+    <div className={`bg-secondary ${styles.containerWrap}`}>
       <img
         src="assets/contact_car.png"
         alt="car"
@@ -160,9 +161,9 @@ const Contact = () => {
           >
             <div className="my-3">
               <form onSubmit={handlerSubmit}>
-                <label htmlFor="fname">First name</label>
-                <br />
-                <input
+                <CustomInput
+                  label="First Name"
+                  htmlFor="fname"
                   type="text"
                   id="fname"
                   name="fname"
@@ -170,14 +171,12 @@ const Contact = () => {
                   minLength={2}
                   maxLength={10}
                   onChange={handleChange}
-                  className={`${styles.inputElement}`}
                   pattern="[A-Za-z]{2,10}"
-                  required
                 />
                 <br />
-                <label htmlFor="lname">Last name</label>
-                <br />
-                <input
+                <CustomInput
+                  label="Last Name"
+                  htmlFor="lname"
                   type="text"
                   id="lname"
                   name="lname"
@@ -185,35 +184,29 @@ const Contact = () => {
                   minLength={2}
                   maxLength={10}
                   onChange={handleChange}
-                  className={`${styles.inputElement}`}
                   pattern="[A-Za-z]{2,10}"
-                  required
                 />
                 <br />
-                <label htmlFor="email">Email</label>
-                <br />
-                <input
+                <CustomInput
+                  label="Email"
+                  htmlFor="email"
                   type="email"
                   id="email"
                   name="email"
-                  required
-                  className={`${styles.inputElement}`}
-                  placeholder=""
                   value={form.email}
                   onChange={handleChange}
                   pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  placeholder=""
                 />
                 <br />
-                <label htmlFor="subject">Subject</label>
-                <br />
-                <input
+                <CustomInput
+                  label="Subject"
+                  htmlFor="subject"
                   type="text"
                   id="subject"
                   name="subject"
-                  className={`${styles.inputElement}`}
                   value={form.subject}
                   onChange={handleChange}
-                  required
                 />
                 <br />
                 <label htmlFor="message">Message</label>
